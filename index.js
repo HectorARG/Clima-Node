@@ -15,20 +15,20 @@ const main = async () => {
         switch (opt) {
             case 1:
                 // Mostrar mensaje
-                    const lugar = await leerInput('Ciudad: ');
-                    const lugares = await busquedas.ciudad(lugar);
-                    await listadoLugares(lugares);
+                const lugar = await leerInput('Ciudad: ');
                 //Buscar los lugares
-
+                const lugares = await busquedas.ciudad(lugar);
                 //Seleccionar el lugar
+                const id = await listadoLugares(lugares);
+                const lugarSelec = lugares.find( l => l.id === id );
 
                 //Clima
 
                 //Mostrar resultados
                 console.log('\nInformacion de la ciudad\n');
-                console.log('Ciudad');
-                console.log('Lat');
-                console.log('Lng');
+                console.log('Ciudad: ' + lugarSelec.nombre);
+                console.log('Lat: ' + lugarSelec.lat);
+                console.log('Lng: ' + lugarSelec.lng);
                 console.log('Temperatura');
                 console.log('Minima');
                 console.log('Maxima');
